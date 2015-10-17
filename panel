@@ -33,7 +33,7 @@ pb() {
 }
 
 groups() {
-		# highlight glyphs according to the status of the group
+	# highlight glyphs according to the status of the group
 	for gs in $(wmstatus); do
 		case $gs in
 			'0') lw '•' ;;
