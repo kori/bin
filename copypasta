@@ -1,0 +1,23 @@
+#!/bin/sh
+if [ -n ${1} ]; then
+	case ${1} in
+		"gorilla") copypasta="What the fuck did you just fucking say about me, you little bitch? I’ll have you know I graduated top of my class in the Navy Seals, and I’ve been involved in numerous secret raids on Al-Quaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I’m the top sniper in the entire US armed forces. You are nothing to me but just another target.
+I will wipe you the fuck out with precision the likes of which has never been seen before on this Earth, mark my fucking words. You think you can get away with saying that shit to me over the Internet? Think again, fucker. As we speak I am contacting my secret network of spies across the USA and your IP is being traced right now so you better prepare for the storm, maggot. The storm that wipes out the pathetic little thing you call your life. You’re fucking dead, kid.
+I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that’s just with my bare hands. Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps and I will use it to its full extent to wipe your miserable ass off the face of the continent, you little shit.
+If only you could have known what unholy retribution your little “clever” comment was about to bring down upon you, maybe you would have held your fucking tongue. But you couldn’t, you didn’t, and now you’re paying the price, you goddamn idiot. I will shit fury all over you and you will drown in it. You’re fucking dead, kiddo." ;;
+		"penguin") copypasta="hi every1 im new!!!!!!! holds up spork my name is katy but u can call me t3h PeNgU1N oF d00m!!!!!!!! lol... as u can see im very random!!!! thats why i came here, 2 meet random ppl like me... im 13 years old (im mature 4 my age tho!!)
+i like 2 watch invader zim w/ my girlfreind (im bi if u dont like it deal w/it) its our favorite tv show!!! bcuz its SOOOO random!!!! shes random 2 of course but i want 2 meet more random ppl =) like they say the more the merrier!!!! lol…neways i hope 2 make alot of freinds here so give me lots of commentses!!!!
+DOOOOOMMMM!!!!!!!!!!!!!!!! <--- me bein random again _^ hehe…toodles!!!!!
+love and waffles, t3h PeNgU1N oF d00m" ;;
+		"grandpa") copypasta="My Grandfather smoked his whole life. I was about 10 years old when my mother said to him, 'If you ever want to see your grandchildren graduate, you have to stop immediately.'. Tears welled up in his eyes when he realized what exactly was at stake. He gave it up immediately. Three years later he died of lung cancer. It was really sad and destroyed me. 
+My mother said to me- 'Don't ever smoke. Please don't put your family through what your Grandfather put us through.' I agreed. At 28, I have never touched a cigarette. I must say, I feel a very slight sense of regret for never having done it, because this channel gave me cancer anyway." ;;
+		"nine") copypasta="vai se ferrar com essa merda seu chato já deu né
+muito chato, sério deu já né tá chatíssimo, chato de mais, não tem graça alguma você é completamente chato sem graça com isso para não tem graça não é bom não faz bem não não é chato é chato deu deu logo para acabou isso é coisa muito coisa deu isso é simplesmente chato você é chato que nem fazer isso é muito chato iso é muito chato e não faz sentido é sem graça é chato é muito chat não tem graça é inlegal não é legal é graça sem tem falta de graça isso não me faz gargalhar isso só ocupa espaço-tempo-post nesse chan isso é muito inútil deverias levar ban logo é muito chato nem trazes conteúdo mais só merda hoje em dia para de postar ou ao menos posta menos era melhor quando tu postava menos bem melhor menos chato menos chatice mais legal melhor mas agora posta mais e é muito chato só incomoda é chato e desvertido é sem graça isso é muito não legal
+vai tomar no seu cu some inferno seu chato de merda tua vida deve ser muito infeliz pra ficar fazendo essas coisas chatas sempre forçando sem graça alguma não é engraçado não é legal a sua vida é uma infelicidade só imagino que horrível deve ser chata que nem o quanto você é horrível
+horrível" ;;
+		*) copypasta="no such copypasta" ;;
+	esac
+	echo $copypasta
+else
+	echo "no copypasta given"
+fi

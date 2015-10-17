@@ -1,0 +1,16 @@
+#!/bin/sh
+# list currently activated runit daemons
+
+daemons=$(echo /var/run/runit/supervise.* | sort | sed -e s:/var/run/runit/supervise.::g)
+
+isRunning() {
+	grep 'run' /var/run/runit/supervise.${1}/stat 1> /dev/null
+}
+
+for d in ${daemons}; do
+	if isRunning "${daemon}"; then
+		echo '[[32m✓[0m]' ${d}
+	else
+		echo '[[31m✘[0m][30m' ${d} '[0m'
+	fi
+done

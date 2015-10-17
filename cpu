@@ -1,0 +1,5 @@
+#!/bin/sh
+# get current overall CPU usage
+
+l=`ps -eo pcpu |grep -vE '^\s*(0.0|%CPU)' |tr '\n' '+'|sed 's/+$//'`
+printf "%.0f\n" $(echo $l | bc)

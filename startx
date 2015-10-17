@@ -1,0 +1,12 @@
+#!/bin/sh
+# xinit with custom options
+
+lock=0
+X='/usr/bin/X'
+opts='-nolisten tcp'
+
+while [ -e "/tmp/.X$d-lock" ]; do
+	lock="$((d+1))"
+done
+
+exec xinit $LOCAL/cfg/xinitrc -- $X :$lock $opts

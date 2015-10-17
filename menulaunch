@@ -1,0 +1,4 @@
+#!/bin/sh
+# launch program with arguments supplied by dmenu
+
+$1 $(menu -p $1 </dev/null)

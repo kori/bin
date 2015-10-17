@@ -1,0 +1,12 @@
+#!/bin/sh
+# dmenu_run with menu, instead of just dmenu
+
+cache=$HOME/.cache/dmenu
+(
+	IFS=:
+	if stest -dqr -n "$cache" $PATH; then
+		stest -flx $PATH | sort -u | tee "$cache" | menu -p ">_" "$@"
+	else
+		menu -p ">_" "$@" < "$cache"
+	fi
+) | sh &

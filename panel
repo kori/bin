@@ -1,0 +1,82 @@
+#!/bin/sh
+# panel script
+
+# set colors
+barfg='%{F#ff839496}'
+barhl='%{F#ff58698c}'
+barlw='%{F#ff353540}'
+barbg='%{B#ff09090d}'
+
+# color functions to save time
+lw() {
+	echo -n "${barlw}${1}${barfg}"
+}
+hl() {
+	echo -n "${barhl}${1}${barfg}"
+}
+
+pb() {
+	case `cat /dev/stdin` in
+		100)    hl 'ͿͿͿͿͿͿͿͿͿͿ' ;;
+		9[0-9]) hl 'ͿͿͿͿͿͿͿͿͿ' && lw '΀' ;;
+		8[0-9]) hl 'ͿͿͿͿͿͿͿͿ' && lw '΀΀' ;;
+		7[0-9]) hl 'ͿͿͿͿͿͿͿ' && lw '΀΀΀' ;;
+		6[0-9]) hl 'ͿͿͿͿͿͿ' && lw '΀΀΀΀' ;;
+		5[0-9]) hl 'ͿͿͿͿͿ' && lw '΀΀΀΀΀' ;;
+		4[0-9]) hl 'ͿͿͿͿ' && lw '΀΀΀΀΀΀' ;;
+		3[0-9]) hl 'ͿͿͿ' && lw '΀΀΀΀΀΀΀' ;;
+		2[0-9]) hl 'ͿͿ' && lw '΀΀΀΀΀΀΀΀' ;;
+		1[0-9]) hl 'Ϳ' && lw '΀΀΀΀΀΀΀΀΀' ;;
+		[0-9] | 0[0-9]) lw '΀΀΀΀΀΀΀΀΀΀' ;;
+	esac
+	echo -n ' '
+}
+
+groups() {
+		# highlight glyphs according to the status of the group
+	for gs in $(wmstatus); do
+		case $gs in
+			'0') lw '•' ;;
+			'1') hl '•' ;; 
+		esac
+	done
+}
+
+panel() {
+	# set bg/fg
+    bar="$barfg$barbg"
+
+	# left section
+	bar="$bar %{l}"
+	# icon and button to kill current window
+	bar="$bar $(hl "%{A:killwa $(pfw):}✗%{A}")"
+	# window title
+	bar="$bar `pfw`"
+
+	# center section
+	bar="$bar %{c}"
+	# window groups
+	bar="$bar $(groups)"
+
+	# right section
+	bar="$bar %{r}"
+	# cpu
+	bar="$bar $(hl '⭥')"
+	bar="$bar $(cpu | pb)"
+	# memory
+	bar="$bar $(hl '⭦')"
+	bar="$bar $(memory | pb)"
+	# volume
+	bar="$bar $(hl '⭰')"
+	bar="$bar $(volume | pb)"
+	# clock
+	bar="$bar $(hl '⭧')"
+	bar="$bar $(date '+%T')"
+	echo "$bar "
+}
+
+# invoke panel
+while :; do
+	panel;
+	sleep 0.25;
+done | bar -df eientei | while read line; do eval $line; done
