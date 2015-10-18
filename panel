@@ -79,4 +79,4 @@ panel() {
 while :; do
 	panel;
 	sleep 0.25;
-done | bar -df eientei | while read line; do eval $line; done
+done | bar -df eientei -g x$PANELHEIGHT | while read line; do eval $line; done

@@ -1,8 +1,6 @@
 #!/bin/sh
 # screenshot window with a gap around the window
 
-GAP=15
-
 eval $(slop)
 X=$((X - GAP))
 Y=$((Y - GAP))
