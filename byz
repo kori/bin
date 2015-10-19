@@ -2,11 +2,12 @@
 # record rectangle with slop + byzanz
 # usage: byz [duration]
 
-eval $(slop)
 if [ -z $1 ]; then
 	D=15 
 else
 	D=$1
 fi
 
-byzanz-record -x ${X} -y ${Y} -w ${W} -h ${H} -v -d 15 $(date +%s).gif
+eval $(slop)
+
+byzanz-record -x ${X} -y ${Y} -w ${W} -h ${H} -d ${D} -v $(date +%s).gif

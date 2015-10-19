@@ -29,17 +29,11 @@ pb() {
 		1[0-9]) hl 'Ϳ' && lw '΀΀΀΀΀΀΀΀΀' ;;
 		[0-9] | 0[0-9]) lw '΀΀΀΀΀΀΀΀΀΀' ;;
 	esac
-	echo -n ' '
 }
 
 groups() {
 	# highlight glyphs according to the status of the group
-	for gs in $(wmstatus); do
-		case $gs in
-			'0') lw '•' ;;
-			'1') hl '•' ;; 
-		esac
-	done
+	wmstatus | sed -e s/0/$(lw '•')/g -e s/1/$(hl '•')/g
 }
 
 panel() {
