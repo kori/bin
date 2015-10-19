@@ -72,5 +72,5 @@ panel() {
 # invoke panel
 while :; do
 	panel;
-	sleep 0.25;
-done | bar -df eientei -g x$PANELHEIGHT | while read line; do eval $line; done
+	sleep 0.2;
+done | bar -df Metis -g x$PANELHEIGHT | while read line; do eval $line; done

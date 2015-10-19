@@ -1,4 +1,4 @@
 #!/bin/sh
 # dmenu with custom options
 
-dmenu -fn "eientei" -nb '#09090d' -nf '#839496' -sb '#09090d' -sf '#58698c' -x 800 -y 560 -w 350 -h 20 -l 0 $@
+dmenu -fn "Metis" -nb '#09090d' -nf '#839496' -sb '#09090d' -sf '#58698c' -x 800 -y 560 -w 350 -h 20 -l 0 $@
