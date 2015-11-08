@@ -13,7 +13,7 @@ if [ -n "$1" ]; then
 		"same") emote='[3✔] Same' ;;
 		"wee") emote='ミ(　 ・ω・)' ;;
 		"denko") emote='(´・ω・`)' ;;
-		"shrug") emote='┐('~'; )┌' ;;
+		"shrug") emote="┐('~'; )┌" ;;
 		"yay") emote='ヽ(•ヮ• ヽ)' ;;
 		"wink") emote='( ´・‿-)' ;;
 		"ohboy") emote='ᕕ( ᐛ )ᕗ' ;;
