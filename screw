@@ -1,6 +1,8 @@
 #!/bin/sh
 # screenshot window with a gap around the window
 
+. $WMCONF
+
 eval $(slop)
 X=$((X - GAP))
 Y=$((Y - GAP))
