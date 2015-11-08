@@ -1,0 +1,14 @@
+#!/bin/sh
+# wrapper for notifications
+# usage: <command> | notify
+
+. $WMCONF
+
+DURATION=${DURATION:-"3"}
+FONT=${FONT:-"metis"}
+
+W=256
+H=48
+SW=$(wattr w $(lsw -r))
+
+(echo "%{c}$(cat /dev/stdin)"; sleep $DURATION) | bar -d -g "${W}x${H}+$((SW - W - GAP))+$((PANELHEIGHT + GAP))" -f $FONT -B "#ff09090d" -F "#ff839496"
