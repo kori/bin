@@ -1,0 +1,12 @@
+#!/bin/sh
+# dmenu_run with menu, instead of just dmenu
+
+PREFIX=">_"
+CACHE=$TMPDIR/dmenu
+
+IFS=:
+if stest -dqr -n ${CACHE} $PATH; then
+	stest -flx $PATH | sort -u | tee ${CACHE} | menu -p ${PREFIX} ${@}
+else
+	menu -p $PREFIX ${@} < ${CACHE}
+fi | sh &
