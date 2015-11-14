@@ -4,13 +4,21 @@
 
 . $WMCONF
 
-DURATION=${DURATION:-"3"}
+WIDTH=256
+HEIGHT=48
+BG=${BG:-"#ff09090d"}
+FG=${FG:-"#ff839496"}
 FONT=${FONT:-"metis"}
+DURATION=${DURATION:-"3"}
 
+# screen width, width offset, height offset
 SW=$(wattr w $(lsw -r))
-W=256
-H=48
-XO=$((SW - W - GAP))
+XO=$((SW - WIDTH - GAP))
 YO=$((PANELHEIGHT + GAP))
 
-(echo "%{c}$(cat /dev/stdin)"; sleep $DURATION) | bar -d -g "${W}x${H}+${XO}+${YO}" -f $FONT -B "#ff09090d" -F "#ff839496"
+{
+	printf '%%{c}'
+	cat
+	sleep $DURATION
+} | bar -df $FONT -B $BG -F $FG \
+	-g ${WIDTH}x${HEIGHT}+${XO}+${YO}
