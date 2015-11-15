@@ -3,11 +3,10 @@
 
 . $WMCONF
 
-eval $(slop)
+eval $(slop -b1)
 X=$((X - GAP))
 Y=$((Y - GAP))
 W=$((W + 2*GAP))
 H=$((H + 2*GAP))
 
-sleep 0.5
 maim -g ${W}x${H}+${X}+${Y}
