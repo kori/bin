@@ -1,34 +1,36 @@
 #!/bin/sh
 # panel script
 
-. $WMCONF
+. $XDG_CONFIG_HOME/wm.conf
 
 # set colors
-bfg='%{F#ff839496}'
-bhl='%{F#ff58698c}'
+ffg='%{F#ff839496}'
+bfg='%{B#ff839496}'
+fhl='%{F#ff58698c}'
+bhl='%{B#ff58698c}'
 blw='%{F#ff353540}'
+fbg='%{F#ff09090d}'
 bbg='%{B#ff09090d}'
 
 pb() {
-	progressbar | sed -e 0,//s//${blw}/ -e 0,//s//${bhl}/
+	progressbar | sed -e 0,//s//${blw}/ -e 0,//s//${fhl}/
 }
 
 # group indicators
 gi() {
-	wmstatus | sed -e s/0/${blw}/g -e s/1/${bhl}/g
+	wmstatus | sed -e s/0/${blw}/g -e s/1/${fhl}/g
 }
 
 # invoke panel
 while :; do
 	# set bg/fg
-    bar="$bfg$bbg"
+	bar="$ffg$bbg"
 
 	# left section
 	bar="$bar %{l}"
-	# icon and button to kill current window
-	bar="$bar $bhl%{A:killwa $(pfw):}✗%{A}"
-	# window title
-	bar="$bar $bfg$(pfw)"
+	# music
+	bar="$bar ${fhl}"
+	bar="$bar ${ffg}$(mpc current)${fbg}"
 
 	# center section
 	bar="$bar %{c}"
@@ -38,17 +40,19 @@ while :; do
 	# right section
 	bar="$bar %{r}"
 	# cpu
-	bar="$bar ${bhl}"
+	bar="$bar ${fhl}"
 	bar="$bar $(cpu | pb)"
 	# memory
-	bar="$bar ${bhl}"
+	bar="$bar ${fhl}"
 	bar="$bar $(memory | pb)"
 	# volume
-	bar="$bar ${bhl}"
+	bar="$bar ${fhl}"
 	bar="$bar $(volume | pb)"
 	# clock
-	bar="$bar ${bhl}${bfg}"
-	bar="$bar $(date '+%T')"
+	bar="$bar ${fhl}${bbg}"
+	bar="$bar ${ffg}$(date '+%T')"
+
 	echo "$bar "
-	sleep 0.2;
-done | bar -df Metis -g x$PANELHEIGHT | while read line; do eval $line; done
+	sleep 0.5;
+done | lemonbar -g $(wattr w $(lsw -r))x${PANELHEIGHT}x0x0 \
+                -df 'Metis' -f "kochigothic:size=8"

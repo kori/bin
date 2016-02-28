@@ -1,7 +1,7 @@
 #!/bin/sh
 # screenshot window with a gap around the window
 
-. $WMCONF
+. $XDG_CONFIG_HOME/wm.conf
 
 eval $(slop -b1)
 X=$((X - GAP))

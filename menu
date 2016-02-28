@@ -4,6 +4,7 @@
 WIDTH=256
 HEIGHT=16
 FONT="Metis"
+LINES=5
 
 # screen width, width offset, height offset
 SW=$(wattr w $(lsw -r))
@@ -11,7 +12,7 @@ SH=$(wattr h $(lsw -r))
 XO=$(((SW - WIDTH)/2))
 YO=$(((SH - HEIGHT)/2))
 
-dmenu -fn ${FONT} -l 0 \
+dmenu -fn ${FONT} -l ${LINES} \
       -nb '#09090d' -nf '#839496' \
       -sb '#09090d' -sf '#58698c' \
       -w ${WIDTH} -h ${HEIGHT} \
