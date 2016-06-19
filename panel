@@ -12,13 +12,9 @@ blw='%{F#ff353540}'
 fbg='%{F#ff09090d}'
 bbg='%{B#ff09090d}'
 
-pb() {
-	progressbar | sed -e 0,//s//${blw}/ -e 0,//s//${fhl}/
-}
-
-# group indicators
-gi() {
-	wmstatus | sed -e s/0/${blw}/g -e s/1/${fhl}/g
+# workspace indicators
+wi() {
+	wsm status | sed -e s/0/${blw}0/g -e s/1/${fhl}1/g
 }
 
 # invoke panel
@@ -29,30 +25,30 @@ while :; do
 	# left section
 	bar="$bar %{l}"
 	# music
-	bar="$bar ${fhl}"
+	bar="$bar ${fhl}MUSIC"
 	bar="$bar ${ffg}$(mpc current)${fbg}"
 
 	# center section
 	bar="$bar %{c}"
 	# window groups
-	bar="$bar $(gi)"
+	bar="$bar $(wi)"
 
 	# right section
 	bar="$bar %{r}"
 	# cpu
-	bar="$bar ${fhl}"
-	bar="$bar $(cpu | pb)"
+	bar="$bar ${fhl}CPU${ffg}"
+	bar="$bar $(cpu)"
 	# memory
-	bar="$bar ${fhl}"
-	bar="$bar $(memory | pb)"
+	bar="$bar ${fhl}MEM${ffg}"
+	bar="$bar $(memory)"
 	# volume
-	bar="$bar ${fhl}"
-	bar="$bar $(volume | pb)"
+	#bar="$bar ${fhl}VOL${ffg}"
+	#bar="$bar $(volume)"
 	# clock
-	bar="$bar ${fhl}${bbg}"
+	bar="$bar ${fhl}TIME${bbg}"
 	bar="$bar ${ffg}$(date '+%T')"
 
 	echo "$bar "
-	sleep 0.5;
+	sleep 0.35;
 done | lemonbar -g $(wattr w $(lsw -r))x${PANELHEIGHT}x0x0 \
-                -df 'Metis' -f "kochigothic:size=8"
+                -df 'Nimbus Sans L:size=12' -f 'M+ 1m'

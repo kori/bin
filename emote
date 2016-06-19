@@ -19,7 +19,6 @@ if [ -n "$1" ]; then
 		"ohboy") emote='ᕕ( ᐛ )ᕗ' ;;
 		"what") emote='( ´_ゝ`)' ;;
 		"mad") emote='(⇀‸↼‶)' ;;
-		*) emote="not an emote in the list" ;;
 	esac
 	echo $emote
 else
