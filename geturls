@@ -1,4 +1,5 @@
 #!/bin/sh
 # get all local urls
 # to be used with st
-ag --only-match --nocolor "https?://127\.0\.0\.1:\d+/\w+"
+ag --only-match --nocolor "https?://127\.0\.0\.1:\d+/\w+" | sort -r | menu -p url
+exit 0

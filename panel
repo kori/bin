@@ -8,13 +8,22 @@ ffg='%{F#ff839496}'
 bfg='%{B#ff839496}'
 fhl='%{F#ff58698c}'
 bhl='%{B#ff58698c}'
-blw='%{F#ff353540}'
+flw='%{F#ff353540}'
 fbg='%{F#ff09090d}'
 bbg='%{B#ff09090d}'
 
 # workspace indicators
 wi() {
-	wsm status | sed -e s/0/${blw}0/g -e s/1/${fhl}1/g
+	for i in $(wsm status); do
+		echo $i | while IFS=: read ws st; do
+			case $st in
+				0) echo -n "$flw" ;;
+				1) echo -n "$fhl" ;;
+			esac
+			echo -n "$ws "
+			echo -n $ffg
+		done
+	done
 }
 
 # invoke panel
@@ -24,14 +33,15 @@ while :; do
 
 	# left section
 	bar="$bar %{l}"
+	# window groups
+	bar="$bar  $(wi)"
+
 	# music
-	bar="$bar ${fhl}MUSIC"
-	bar="$bar ${ffg}$(mpc current)${fbg}"
+#	bar="$bar ${fhl}MUSIC"
+#	bar="$bar ${ffg}$(mpc current)${fbg}"
 
 	# center section
-	bar="$bar %{c}"
-	# window groups
-	bar="$bar $(wi)"
+	#bar="$bar %{c}"
 
 	# right section
 	bar="$bar %{r}"
