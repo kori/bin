@@ -20,7 +20,13 @@ wi() {
 				0) echo -n "$flw" ;;
 				1) echo -n "$fhl" ;;
 			esac
-			echo -n "$ws "
+			case $ws in
+				1) echo -n "main " ;;
+				2) echo -n "www " ;;
+				3) echo -n "steam " ;;
+				4) echo -n "null " ;;
+				5) echo -n "void" ;;
+			esac
 			echo -n $ffg
 		done
 	done
