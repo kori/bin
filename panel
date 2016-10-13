@@ -3,6 +3,7 @@
 
 . $XDG_CONFIG_HOME/wm.conf
 
+
 # set colors
 ffg='%{F#ff839496}'
 bfg='%{B#ff839496}'
@@ -11,6 +12,7 @@ bhl='%{B#ff58698c}'
 flw='%{F#ff353540}'
 fbg='%{F#ff09090d}'
 bbg='%{B#ff09090d}'
+sep="${flw} │ ${ffg}"
 
 # workspace indicators
 wi() {
@@ -21,13 +23,14 @@ wi() {
 				1) echo -n "$fhl" ;;
 			esac
 			case $ws in
-				1) echo -n "main " ;;
-				2) echo -n "www " ;;
-				3) echo -n "steam " ;;
-				4) echo -n "null " ;;
+				1) echo -n "main" ;;
+				2) echo -n "www" ;;
+				3) echo -n "steam" ;;
+				4) echo -n "null" ;;
 				5) echo -n "void" ;;
 			esac
-			echo -n $ffg
+			echo -n $bbg$ffg
+			echo -n ' '
 		done
 	done
 }
@@ -40,31 +43,35 @@ while :; do
 	# left section
 	bar="$bar %{l}"
 	# window groups
-	bar="$bar  $(wi)"
+	bar="$bar $(wi)"
 
 	# music
-#	bar="$bar ${fhl}MUSIC"
-#	bar="$bar ${ffg}$(mpc current)${fbg}"
 
 	# center section
 	#bar="$bar %{c}"
 
 	# right section
 	bar="$bar %{r}"
+	bar="$bar${fhl}♫"
+	bar="$bar ${ffg}$(mpc current)${fbg}"
+	bar="$bar$sep"
 	# cpu
-	bar="$bar ${fhl}CPU${ffg}"
-	bar="$bar $(cpu)"
+	bar="$bar${fhl}${ffg}"
+	bar="$bar $(cpu)%"
+	bar="$bar$sep"
 	# memory
-	bar="$bar ${fhl}MEM${ffg}"
+	bar="$bar${fhl}${ffg}"
 	bar="$bar $(memory)"
+	bar="$bar$sep"
 	# volume
-	#bar="$bar ${fhl}VOL${ffg}"
-	#bar="$bar $(volume)"
+	bar="$bar${fhl}${ffg}"
+	bar="$bar $(volume | sed 1q)%"
+	bar="$bar$sep"
 	# clock
-	bar="$bar ${fhl}TIME${bbg}"
+	bar="$bar${fhl}${bbg}"
 	bar="$bar ${ffg}$(date '+%T')"
 
 	echo "$bar "
-	sleep 0.35;
-done | lemonbar -g $(wattr w $(lsw -r))x${PANELHEIGHT}x0x0 \
-                -df 'Nimbus Sans L:size=12' -f 'M+ 1m'
+	sleep 0.25;
+done | lemonbar -g "$(wattr w $(lsw -r))x${PANELHEIGHT}x0x0" -d \
+                -f 'Metis:pixelsize=8' -f 'kochigothic:size=8'

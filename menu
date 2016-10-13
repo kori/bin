@@ -3,7 +3,7 @@
 
 WIDTH=256
 HEIGHT=16
-FONT="Nimbus Sans L:size=11"
+FONT="Metis"
 LINES=5
 
 # screen width, width offset, height offset
