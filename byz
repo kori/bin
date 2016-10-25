@@ -3,7 +3,7 @@
 # usage: byz [duration]
 
 if [ -z $1 ]; then
-	D=15 
+	D=15
 else
 	D=$1
 fi

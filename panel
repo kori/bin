@@ -14,23 +14,22 @@ fbg='%{F#ff09090d}'
 bbg='%{B#ff09090d}'
 sep="${flw} │ ${ffg}"
 
-# workspace indicators
-wi() {
-	for i in $(wsm status); do
+# group indicators
+gi() {
+	for i in $(gm status); do
 		echo $i | while IFS=: read ws st; do
 			case $st in
 				0) echo -n "$flw" ;;
 				1) echo -n "$fhl" ;;
 			esac
 			case $ws in
-				1) echo -n "main" ;;
-				2) echo -n "www" ;;
-				3) echo -n "steam" ;;
-				4) echo -n "null" ;;
-				5) echo -n "void" ;;
+				1) echo -n "一" ;;
+				2) echo -n "二" ;;
+				3) echo -n "三" ;;
+				4) echo -n "四" ;;
+				5) echo -n "五" ;;
 			esac
-			echo -n $bbg$ffg
-			echo -n ' '
+			echo -n "$bbg$ffg "
 		done
 	done
 }
@@ -42,36 +41,38 @@ while :; do
 
 	# left section
 	bar="$bar %{l}"
+	bar="$bar$fhl  氷$ffg$sep"
 	# window groups
-	bar="$bar $(wi)"
-
-	# music
+	bar="$bar$(gi)"
 
 	# center section
 	#bar="$bar %{c}"
-
 	# right section
 	bar="$bar %{r}"
-	bar="$bar${fhl}♫"
-	bar="$bar ${ffg}$(mpc current)${fbg}"
-	bar="$bar$sep"
+	# music
+	if [ ! -z "$(mpc current)" ]; then
+		bar="$bar${fhl}MUSIC"
+		bar="$bar ${ffg}$(mpc current)${fbg}"
+		bar="$bar$sep"
+	fi
 	# cpu
-	bar="$bar${fhl}${ffg}"
+	bar="$bar${fhl}CPU${ffg}"
 	bar="$bar $(cpu)%"
 	bar="$bar$sep"
 	# memory
-	bar="$bar${fhl}${ffg}"
+	bar="$bar${fhl}MEM${ffg}"
 	bar="$bar $(memory)"
 	bar="$bar$sep"
 	# volume
-	bar="$bar${fhl}${ffg}"
+	bar="$bar${fhl}VOL${ffg}"
 	bar="$bar $(volume | sed 1q)%"
 	bar="$bar$sep"
 	# clock
-	bar="$bar${fhl}${bbg}"
+	bar="$bar${fhl}TIME${bbg}"
 	bar="$bar ${ffg}$(date '+%T')"
 
-	echo "$bar "
-	sleep 0.25;
+	echo "$bar  "
+	sleep 0.15;
 done | lemonbar -g "$(wattr w $(lsw -r))x${PANELHEIGHT}x0x0" -d \
-                -f 'Metis:pixelsize=8' -f 'kochigothic:size=8'
+                 -f 'Clear Sans:size=12' -f 'IPAGothic'
+#                -f 'Metis:pixelsize=8' -f 'kochi gothic:size=8'

@@ -1,20 +1,20 @@
 #!/bin/sh
 # dmenu with custom options
 
-WIDTH=256
-HEIGHT=16
-FONT="Metis"
-LINES=5
+width=256
+height=16
+font="Clear Sans:size=11"
+lines=5
 
 # screen width, width offset, height offset
-SW=$(wattr w $(lsw -r))
-SH=$(wattr h $(lsw -r))
-XO=$(((SW - WIDTH)/2))
-#YO=$(((SH - HEIGHT)/2))
-YO=0
+sw=$(wattr w $(lsw -r))
+sh=$(wattr h $(lsw -r))
+xo=$(((sw - width)/2))
+#yo=$(((sh - height)/2))
+yo=0
 
-dmenu -fn "${FONT}" -l ${LINES} \
+dmenu -fn "${font}" -l ${lines} \
       -nb '#09090d' -nf '#839496' \
       -sb '#09090d' -sf '#58698c' \
-      -w ${WIDTH} -h ${HEIGHT} \
-      -x ${XO} -y ${YO} $@
+      -w ${width} -h ${height} \
+      -x ${xo} -y ${yo} $@

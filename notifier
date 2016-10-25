@@ -4,29 +4,27 @@
 . $XDG_CONFIG_HOME/wm.conf
 
 # appearance
-FONT="metis"
-JFONT="kochigothic:size=8"
-WIDTH=256
-HEIGHT=48
-BG="#ff09090d"
-FG="#ff839496"
-HL="#ff58698c"
-DURATION=3
+width=256
+height=48
+font='Clear Sans:size=11'
+fgc='#839496'
+bgc='#09090d'
+duration=3
 
 # screen width, width offset, height offset
-SW=$(wattr w $(lsw -r))
-XO=$((SW - WIDTH - GAP))
-YO=$((PANELHEIGHT + GAP))
+sw=$(wattr w $(lsw -r))
+xo=$((sw - width - GAP))
+yo=$((PANELHEIGHT + GAP))
 
 # named pipe
-FIFO=$TMPDIR/notify
-[ -p $FIFO ] || mkfifo $FIFO
+fifo=$TMPDIR/notify
+[ -p $fifo ] || mkfifo $fifo
 
 # main loop
-tail -f $FIFO | while read line; do
-	(
-		echo "%{c}$line"
-		sleep $DURATION
-	) | lemonbar -d -f $FONT -f $JFONT -B $BG -F $FG \
-		-g ${WIDTH}x${HEIGHT}+${XO}+${YO}
+tail -f $fifo | while read line; do {
+	echo "$line"
+	sleep $duration
+} | skroll -r
+  | lemonbar -g ${width}x${height}+${xo}+${yo} \
+             -d -f$font -F$fgc -B$bgc
 done
