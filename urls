@@ -1,0 +1,10 @@
+#!/bin/sh
+# get all local urls
+# to be used with st
+url=$(ag --only-match --nocolor "https?://127\.0\.0\.1:\d+/\w+" | sort -r | menu -p url)
+
+if [ -z $url ]; then
+	exit 0
+else
+	$BROWSER $url
+fi
