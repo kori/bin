@@ -47,14 +47,9 @@ while :; do
 
 	# center section
 	#bar="$bar %{c}"
+
 	# right section
 	bar="$bar %{r}"
-	# music
-	if [ ! -z "$(mpc current)" ]; then
-		bar="$bar${fhl}MUSIC"
-		bar="$bar ${ffg}$(mpc current)${fbg}"
-		bar="$bar$sep"
-	fi
 	# cpu
 	bar="$bar${fhl}CPU${ffg}"
 	bar="$bar $(cpu)%"
@@ -74,5 +69,4 @@ while :; do
 	echo "$bar  "
 	sleep 0.15;
 done | lemonbar -g "$(wattr w $(lsw -r))x${PANELHEIGHT}x0x0" -d \
-                 -f 'Clear Sans:size=12' -f 'IPAGothic'
-#                -f 'Metis:pixelsize=8' -f 'kochi gothic:size=8'
+                -f 'Clear Sans:size=11' -f 'IPAGothic:size=11'
