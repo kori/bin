@@ -1,5 +1,7 @@
 #!/bin/sh
 # get current overall CPU usage
 
-l=`ps -eo pcpu |grep -vE '^\s*(0.0|%CPU)' |tr '\n' '+'|sed 's/+$//'`
-printf "%.0f\n" "$(echo $l / 4 | bc)"
+total=$(ps -eo pcpu | grep -vE '^\s*(0.0|%CPU)' |tr '\n' '+'|sed 's/+$//')
+result=$(echo "$total" | bc)
+
+printf "%.0f\n" "$(echo "$result / 4" | bc)"
