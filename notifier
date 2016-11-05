@@ -24,7 +24,7 @@ fifo=$TMPDIR/notify
 tail -f $fifo | while read line; do {
 	echo "$line"
 	sleep $duration
-} | skroll -r
+} | skroll -r \
   | lemonbar -g ${width}x${height}+${xo}+${yo} \
              -d -f$font -F$fgc -B$bgc
 done

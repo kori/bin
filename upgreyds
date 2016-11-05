@@ -1,0 +1,11 @@
+#!/bin/sh
+# upgreyds make
+
+if [ -n "$1" ]; then
+	case "$1" in
+		make) pacaur -Syu ;;
+		*) echo "usage: upgreyds make"
+	esac
+else
+	echo "usage: upgreyds make"
+fi
