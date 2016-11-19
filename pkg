@@ -1,0 +1,33 @@
+#!/bin/sh
+# Wrapper script for managing packages on OpenBSD
+
+usage() {
+	echo $1
+	echo "Usage: pkg [add|rm|grep|ls|sync] [package]"
+	exit 1
+}
+
+if [ -n "$1" ]; then
+	case "$1" in
+		# add packages
+		add) shift 1; doas pkg_add $@ ;;
+
+		# remove packages
+		rm) shift 1; doas pkg_delete $@ ;;
+
+		# find packages
+		grep) shift 1; pkg_locate $@ ;;
+
+		# list packages
+		ls) pkg_info ;;
+
+		# upgrade system
+		sync) pkg_add -u ;;
+
+		# error
+		*) usage "Invalid command."
+		;;
+	esac
+else
+	usage "No command provided."
+fi

@@ -6,25 +6,22 @@
 # appearance
 width=256
 height=48
-font='Clear Sans:size=11'
-fgc='#839496'
-bgc='#09090d'
-duration=3
+font='Clear Sans:size=12'
+fgc='#ff839496'
+bgc='#ff09090d'
+duration="0.10"
 
 # screen width, width offset, height offset
 sw=$(wattr w $(lsw -r))
 xo=$((sw - width - GAP))
 yo=$((PANELHEIGHT + GAP))
 
-# named pipe
-fifo=$TMPDIR/notify
-[ -p $fifo ] || mkfifo $fifo
-
 # main loop
-tail -f $fifo | while read line; do {
+notifyterm | while read line; do {
 	echo "$line"
-	sleep $duration
-} | skroll -r \
-  | lemonbar -g ${width}x${height}+${xo}+${yo} \
-             -d -f$font -F$fgc -B$bgc
+} | skroll -r -n 10 -d $duration \
+  | while read sline; do 
+	  echo "%{c}$sline"
+    done | lemonbar -g ${width}x${height}+${xo}+${yo} \
+	                -d -f"$font" -F$fgc -B$bgc
 done
