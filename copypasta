@@ -15,6 +15,19 @@ My mother said to me- 'Don't ever smoke. Please don't put your family through wh
 muito chato, sério deu já né tá chatíssimo, chato de mais, não tem graça alguma você é completamente chato sem graça com isso para não tem graça não é bom não faz bem não não é chato é chato deu deu logo para acabou isso é coisa muito coisa deu isso é simplesmente chato você é chato que nem fazer isso é muito chato iso é muito chato e não faz sentido é sem graça é chato é muito chat não tem graça é inlegal não é legal é graça sem tem falta de graça isso não me faz gargalhar isso só ocupa espaço-tempo-post nesse chan isso é muito inútil deverias levar ban logo é muito chato nem trazes conteúdo mais só merda hoje em dia para de postar ou ao menos posta menos era melhor quando tu postava menos bem melhor menos chato menos chatice mais legal melhor mas agora posta mais e é muito chato só incomoda é chato e desvertido é sem graça isso é muito não legal
 vai tomar no seu cu some inferno seu chato de merda tua vida deve ser muito infeliz pra ficar fazendo essas coisas chatas sempre forçando sem graça alguma não é engraçado não é legal a sua vida é uma infelicidade só imagino que horrível deve ser chata que nem o quanto você é horrível
 horrível" ;;
+		"toucan") copypasta="
+░░░░░░░░▄▄▄▀▀▀▄▄███▄░░░░░░░░░░░░░░░░░
+░░░░░▄▀▀░░░░░░░▐░▀██▌░░░░░░░░░░░░░░░░
+░░░▄▀░░░░▄▄███░▌▀▀░▀█░░░░░░░░░░░░░░░░
+░░▄█░░▄▀▀▒▒▒▒▒▄▐░░░░█▌░░░░░░░░░░░░░░░
+░▐█▀▄▀▄▄▄▄▀▀▀▀▌░░░░░▐█▄░░░░░░░░░░░░░░
+░▌▄▄▀▀░░░░░░░░▌░░░░▄███████▄░░░░░░░░░
+░░░░░░░░░░░░░▐░░░░▐███████████▄░░░░░░
+░░░░░le░░░░░░░▐░░░░▐█████████████▄░░░
+░░░░toucan░░░░░░▀▄░░░▐██████████████▄
+░░░░░░has░░░░░░░░▀▄▄████████████████▄
+░░░░░arrived░░░░░░░░░░░░█▀██████░░░░░
+" ;;
 		*) copypasta="no such copypasta" ;;
 	esac
 	echo $copypasta

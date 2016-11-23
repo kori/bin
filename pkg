@@ -22,7 +22,7 @@ if [ -n "$1" ]; then
 		ls) pkg_info ;;
 
 		# upgrade system
-		sync) pkg_add -u ;;
+		sync) doas pkg_add -u ;;
 
 		# error
 		*) usage "Invalid command."

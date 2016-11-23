@@ -6,10 +6,10 @@
 # appearance
 width=256
 height=48
-font='Clear Sans:size=12'
+font='Clear Sans Medium:size=13'
 fgc='#ff839496'
 bgc='#ff09090d'
-duration="0.10"
+duration="3"
 
 # screen width, width offset, height offset
 sw=$(wattr w $(lsw -r))
@@ -19,9 +19,8 @@ yo=$((PANELHEIGHT + GAP))
 # main loop
 notifyterm | while read line; do {
 	echo "$line"
-} | skroll -r -n 10 -d $duration \
-  | while read sline; do 
-	  echo "%{c}$sline"
-    done | lemonbar -g ${width}x${height}+${xo}+${yo} \
-	                -d -f"$font" -F$fgc -B$bgc
+} | skroll -r -n 32 \
+  | while read sline; do echo "%{c}$sline"; done \
+  | lemonbar -g ${width}x${height}+${xo}+${yo} \
+             -d -f"$font" -F$fgc -B$bgc
 done
