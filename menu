@@ -3,7 +3,7 @@
 
 width=256
 height=16
-font="Clear Sans Medium:size=11"
+font="Clear Sans:size=11"
 lines=5
 
 # screen width, width offset, height offset
@@ -12,11 +12,11 @@ sh=$(wattr h $(lsw -r))
 xo=$(((sw - width)/2))
 yo=$(((sh - height)/2))
 
-#dmenu -fn "${font}" -l ${lines} \
-#      -nb '#09090d' -nf '#839496' \
-#      -sb '#09090d' -sf '#58698c' \
-#      -w ${width} -h ${height} \
-#      -x ${xo} -y ${yo} $@
-dmenu -fn "$font" \
+dmenu -fn "${font}" -l ${lines} \
+      -nb '#09090d' -nf '#839496' \
       -sb '#09090d' -sf '#58698c' \
-      -nb '#09090d' -nf '#839496' $@
+      -w ${width} -h ${height} \
+      -x ${xo} -y ${yo} $@
+#dmenu -fn "$font" \
+#     -sb '#09090d' -sf '#58698c' \
+#     -nb '#09090d' -nf '#839496' $@

@@ -1,5 +1,5 @@
 #!/bin/sh
-# get current memory
+# get current memory usage
 
 t=$(grep MemTotal /proc/meminfo | awk '{print $2}')
 f=$(grep MemFree  /proc/meminfo | awk '{print $2}')
@@ -7,4 +7,3 @@ b=$(grep ^Buffers /proc/meminfo | awk '{print $2}')
 c=$(grep ^Cached  /proc/meminfo | awk '{print $2}')
 
 echo -n $(echo "($t - $f - $c - $b) / 1000" | bc)
-echo "mb"

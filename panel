@@ -3,6 +3,7 @@
 
 . $XDG_CONFIG_HOME/wm.conf
 
+
 # set colors
 ffg='%{F#ff839496}'
 bfg='%{B#ff839496}'
@@ -28,9 +29,9 @@ gi() {
 				4) echo -n "四" ;;
 				5) echo -n "五" ;;
 			esac
-			echo -n "$bbg$ffg "
 		done
 	done
+	echo -n "$ffg"
 }
 
 # invoke panel
@@ -49,11 +50,16 @@ while :; do
 
 	# right section
 	bar="$bar %{r}"
+	# cpu
+	bar="$bar${fhl}CPU${ffg} $(cpu)%"
+	bar="$bar$sep"
+	# memory
+	bar="$bar${fhl}MEM${ffg} $(memory)MB"
+	bar="$bar$sep"
 	# clock
-	bar="$bar${fhl}TIME${bbg}"
-	bar="$bar ${ffg}$(date '+%T')"
+	bar="$bar${fhl}TIME${ffg} $(date '+%T')"
 
 	echo "$bar  "
 	sleep 0.15;
 done | lemonbar -g "$(wattr w $(lsw -r))x${PANELHEIGHT}x0x0" -d \
-                -f 'Clear Sans Medium:size=11' -f 'IPAGothic:size=11'
+                -f 'Clear Sans:size=12' -f 'IPAGothic'
